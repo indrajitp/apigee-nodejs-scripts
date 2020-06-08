@@ -1,6 +1,11 @@
 # apigee-nodejs-scripts
 Scripts to help with certain use cases by orchestrating the Apigee Management APIs
 
+## Disclaimer
+These tools are not an official Google product, nor are they part of an official Google product, nor are they included under any Google support contract.
+Support is available on a best-effort basis via github or [community.apigee.com](https://community.apigee.com) .
+
+
 ## Pre-req
 - NodeJS 8.x or later
 
