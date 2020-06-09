@@ -8,6 +8,7 @@ Support is available on a best-effort basis via github or [community.apigee.com]
 
 ## Pre-req
 - NodeJS 8.x or later
+- Apigee Edge account
 
 ## Steps
 - Clone this repo `git clone https://github.com/ssvaidyanathan/apigee-nodejs-scripts.git`
@@ -20,3 +21,9 @@ Support is available on a best-effort basis via github or [community.apigee.com]
 ### To export Sharedflows that are deployed in a given environment
 - Execute `node exportDeployedSharedFlows.js`
 - Provide your Apigee org, env, username, password, directory to export the proxies
+
+
+
+#### NOTE
+- If you want to use this on Apigee Edge Private Cloud - please update the `mgmtURL` and `mgmtOAuthURL` configurations in [utils.js](./utils.js)
+- If you have enabled SSO on your Apigee Edge org, please update the `mgmtOAuthURL` configurations in [utils.js](./utils.js)
