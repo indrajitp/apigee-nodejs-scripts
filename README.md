@@ -8,7 +8,7 @@ Support is available on a best-effort basis via github or [community.apigee.com]
 
 ## Pre-req
 - NodeJS 8.x or later
-- Apigee Edge account
+- [Apigee Edge account](https://apigee.com/edge)
 
 ## Steps
 - Clone this repo `git clone https://github.com/ssvaidyanathan/apigee-nodejs-scripts.git`
