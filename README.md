@@ -16,3 +16,7 @@ Support is available on a best-effort basis via github or [community.apigee.com]
 ### To export API Proxies that are deployed in a given environment
 - Execute `node exportDeployedProxies.js`
 - Provide your Apigee org, env, username, password, directory to export the proxies
+
+### To export Sharedflows that are deployed in a given environment
+- Execute `node exportDeployedSharedFlows.js`
+- Provide your Apigee org, env, username, password, directory to export the proxies
