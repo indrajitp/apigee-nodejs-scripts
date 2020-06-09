@@ -29,7 +29,7 @@ var schema = {
         required: true
       },
       dir: {
-        description: colors.yellow("Please provide the local directory to download the exported proxies"),
+        description: colors.yellow("Please provide the local directory to download the exported shared flows"),
         message: colors.red("Local directory cannot be empty!"),
         required: true
       }
@@ -42,18 +42,26 @@ var schema = {
 prompt.start();
 
 prompt.get(schema, async function (err, config) {
-  await exportDeployedProxiesInAnEnv(config);
+  await exportDeployedSharedflowsInAnEnv(config);
 });
 
 
 
-async function exportDeployedProxiesInAnEnv(config){
-  console.log(`Exporting Proxies to ${config.dir}`);
+async function exportDeployedSharedflowsInAnEnv(config){
+  console.log(`Exporting SharedFlows to ${config.dir}`);
   let token = await utils.getAccessToken(config);
-  let apis = await utils.getEntities(config, `environments/${config.env}/deployments`, token);
-  for (api of apis.aPIProxy){
-    console.log( `Exporting Proxy: ${api.name} Revision: ${api.revision[0].name} from ${config.env} Environment`);
-    await utils.exportObj(config, `apis/${api.name}/revisions/${api.revision[0].name}?format=bundle`, token, `${config.dir}/${api.name}_rev_${api.revision[0].name}.zip`);
+  let sharedFlows = await utils.getEntities(config, `sharedflows`, token);
+  for (sharedFlow of sharedFlows){
+    let sharedFlowDeployment = await utils.getEntities(config, `sharedflows/${sharedFlow}/deployments`, token);
+    if(sharedFlowDeployment && sharedFlowDeployment.environment){
+      for (env of sharedFlowDeployment.environment){
+        if(env.name && env.name === config.env && env.revision && env.revision.length>0){
+          console.log( `Exporting Shared flow: ${sharedFlow} Revision: ${env.revision[0].name} from ${config.env} Environment`);
+          await utils.exportObj(config, `sharedflows/${sharedFlow}/revisions/${env.revision[0].name}?format=bundle`, token, `${config.dir}/${sharedFlow}_rev_${env.revision[0].name}.zip`);
+        }
+      }
+    }
+    
   }
 }
 
