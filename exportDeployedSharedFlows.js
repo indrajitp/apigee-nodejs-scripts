@@ -1,10 +1,10 @@
-var prompt = require("prompt");
-var colors = require("colors/safe");
+const prompt = require("prompt");
+const colors = require("colors/safe");
 
 
 const utils = require('./utils');
 
-var schema = {
+let schema = {
     properties: {
       org: {
         description: colors.yellow("Please provide the Apigee Edge Organization name"),

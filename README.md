@@ -22,8 +22,10 @@ Support is available on a best-effort basis via github or [community.apigee.com]
 - Execute `node exportDeployedSharedFlows.js`
 - Provide your Apigee org, env, username, password, directory to export the shared flows
 
-
+### To get Users in a given organization
+- Execute `node getOrgUsers.js`
+- Provide your Apigee org, username, password to get the list of users
 
 #### NOTE
 - If you want to use this on Apigee Edge Private Cloud - please update the `mgmtURL` and `mgmtOAuthURL` configurations in [utils.js](./utils.js)
-- If you have enabled SSO on your Apigee Edge org, please update the `mgmtOAuthURL` configurations in [utils.js](./utils.js)
+- If you have enabled SSO on your Apigee Edge org, please update the `mgmtOAuthURL` configurations in [utils.js](./utils.js) and provide machine user credentials
